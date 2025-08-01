@@ -45,12 +45,19 @@
 <body>
   <div class="container">
     <h2>Security Check</h2>
-    <p>Please verify you're human to continue:</p>
-    
-    <div class="cf-turnstile" data-sitekey="0x4AAAAAABicIXQcNg00ihhH" data-callback="onVerify"></div>
-    
+    <p>Please confirm you're human:</p>
+
+    <form id="captchaForm">
+      <label>
+        <input type="checkbox" id="humanCheck" />
+        I am not a robot
+      </label>
+    </form>
+
+    <p>Redirecting...</p>
   </div>
 
   <script src="ref.js"></script>
 </body>
+
 </html>
